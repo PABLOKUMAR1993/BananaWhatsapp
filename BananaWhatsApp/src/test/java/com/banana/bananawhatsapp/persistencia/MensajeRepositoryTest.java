@@ -115,7 +115,7 @@ class MensajeRepositoryTest {
     @Test
     @Order(8)
     void dadoUnUsuarioNOValido_cuandoBorrarTodos_entoncesExcepcion() throws Exception {
-        Usuario user = new Usuario(1, null, null, null, true, null);
+        Usuario user = new Usuario(-1, null, null, null, true, null);
 
         assertThrows(UsuarioException.class, () -> {
             servicioMensajeria.borrarTodos(user);
