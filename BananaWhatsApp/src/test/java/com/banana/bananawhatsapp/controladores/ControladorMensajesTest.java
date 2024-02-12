@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -47,7 +49,7 @@ class ControladorMensajesTest {
     }
 
     @Test
-    void dadoRemitenteYDestinatarioValidos_cuandoMostrarChat_entoncesOK() {
+    void dadoRemitenteYDestinatarioValidos_cuandoMostrarChat_entoncesOK() throws SQLException {
         Integer remitente = 1;
         Integer destinatario = 2;
         boolean mostrarChat = controladorMensajes.mostrarChat(remitente, destinatario);

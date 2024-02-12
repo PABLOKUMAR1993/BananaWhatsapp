@@ -2,8 +2,10 @@ package com.banana.bananawhatsapp.servicios;
 
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Usuario;
-import java.util.Set;
+import org.springframework.stereotype.Service;
 
+import java.util.Set;
+@Service
 public interface IServicioUsuarios {
 
     public Usuario obtener(int id) throws UsuarioException;

@@ -2,16 +2,16 @@ package com.banana.bananawhatsapp.persistencia;
 
 import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
+import com.mysql.cj.protocol.Message;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IMensajeRepository {
-    public Mensaje crear(Mensaje mensaje) throws SQLException;
+@Repository
+public interface IMensajeRepository extends JpaRepository<Mensaje,Integer>{
 
-    public List<Mensaje> obtener(Usuario usuario) throws SQLException;
-
-    public boolean borrarEntre(Usuario remitente, Usuario destinatario) throws Exception;
-
-    public boolean borrarTodos(Usuario usuario) throws SQLException;
+    List<Mensaje> findAllByRemitenteIdAndDestinatarioId(Usuario remitente, Usuario destinatario);
 }

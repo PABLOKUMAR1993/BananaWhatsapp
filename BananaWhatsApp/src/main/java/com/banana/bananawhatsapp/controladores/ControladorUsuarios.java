@@ -4,13 +4,14 @@ import com.banana.bananawhatsapp.modelos.Usuario;
 import com.banana.bananawhatsapp.servicios.IServicioUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 @Controller
 public class ControladorUsuarios {
 
     //////
 
-    @Autowired
+
     private IServicioUsuarios servicioUsuarios;
 
     //////
