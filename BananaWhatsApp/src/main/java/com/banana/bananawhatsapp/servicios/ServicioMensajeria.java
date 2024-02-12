@@ -6,10 +6,11 @@ import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
 import com.banana.bananawhatsapp.persistencia.IMensajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +24,21 @@ public class ServicioMensajeria implements IServicioMensajeria {
 
     @Override
     public Mensaje enviarMensaje(Usuario remitente, Usuario destinatario, String texto) throws UsuarioException, MensajeException {
-        return null;
+        try{
+            if(remitente != null && destinatario != null && texto.length() >10){
+               Mensaje mensaje = new Mensaje();
+               mensaje.setRemitente(remitente);
+               mensaje.setCuerpo(texto);
+               mensaje.setFecha(LocalDate.now());
+               return crear(mensaje);
+            }else{
+                throw new MensajeException("Error al enviar el mensaje");
+            }
+        }catch  (Exception e) {
+            throw new MensajeException("Error al enviar el mensaje"+e.getMessage());
+        }
+
+
     }
 
     @Override
@@ -43,6 +58,7 @@ public class ServicioMensajeria implements IServicioMensajeria {
     }
 
     @Override
+    @Transactional
     public Mensaje crear(Mensaje mensaje) throws Exception {
         try {
             if (mensaje.getCuerpo().isEmpty()) {

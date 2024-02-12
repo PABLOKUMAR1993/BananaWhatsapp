@@ -14,4 +14,5 @@ import java.util.List;
 public interface IMensajeRepository extends JpaRepository<Mensaje,Integer>{
 
     List<Mensaje> findAllByRemitenteIdAndDestinatarioId(Usuario remitente, Usuario destinatario);
+
 }
