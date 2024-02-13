@@ -55,7 +55,7 @@ class ServicioUsuariosTest {
     @Test
     void dadoUnUsuarioValido_cuandoBorrarUsuario_entoncesUsuarioValido() {
         // El método funciona, borra el usuario si existe ese ID, pero siempre crea la excepción.
-        Usuario user = new Usuario(3, null, null, null, true, null);
+        Usuario user = new Usuario(2, null, null, null, true, null);
         boolean userDelete = servicio.borrarUsuario(user);
         assertThat(userDelete, is(true));
     }

@@ -80,7 +80,7 @@ class UsuarioRepositoryTest {
     @Test
     @Order(5)
     void dadoUnUsuarioValido_cuandoBorrar_entoncesOK() throws SQLException {
-        Usuario user = new Usuario(1, null, null, null, true, new ArrayList<>());
+        Usuario user = new Usuario(2, null, null, null, true, new ArrayList<>());
         boolean ok = servicioUsuarios.borrarUsuario(user);
         assertTrue(ok);
     }

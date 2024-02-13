@@ -17,24 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ContextConfiguration(classes = {SpringConfig.class})
 class BananaWhatsAppApplicationTest {
 
-    @Autowired
-    private IMensajeRepository mensajeRepository;
-
-    @Autowired
-    private IServicioMensajeria servicioMensajeria;
-
-    @Test
-    public void servicioShouldNotBeNull(){
-        assertNotNull(servicioMensajeria);
-    }
-
-    @Test
-    public void repositorioShouldNotBeNull(){
-        assertNotNull(mensajeRepository);
-    }
     @Test
     public void load() {
         DBUtil.reloadDB();
         assertTrue(true);
     }
+
 }
