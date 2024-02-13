@@ -45,8 +45,10 @@ public class ServicioUsuarios implements IServicioUsuarios {
             usuarioRepository.deleteById(usuario.getId());
             return true;
         } catch (EmptyResultDataAccessException e) {
+            e.printStackTrace();
             throw new UsuarioException("El usuario no existe: " + e.getMessage());
         } catch (Exception e) {
+            e.printStackTrace();
             throw new UsuarioException("No se puede borrar porque el usuario tiene mensajes: " + e.getMessage());
         }
     }
